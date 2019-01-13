@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <title>Jokes</title>
+  <style>
+    body {
+      background-color: lavender;
+    }
+    
+    div {
+      background-color: ivory;
+      width: 60%;
+      margin: auto;
+    }
+
+    div div {
+      background-color: wheat;
+      width: 95%;
+      margin: 1em auto;
+    }
+    
+    input {
+      padding: .25em;
+      border-radius: 8px;
+    }
+    
+    img {
+      max-width: 250px;
+      max-height: 250px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <% for (var a=0; a<animals.length; a++) { %>
+      <div>
+      <% var ani = animals[a]; %>
+      Name:
+      <%= ani.name %><br>
+      Height:
+      <%= ani.height %><br>
+      Weight:
+      <%= ani.weight %><br>
+      Fur Color:
+      <%= ani.fur_color %>
+      <% if (ani.image_url) { %>
+        <br><img src="/img/animals/<%= ani.image_url %>">
+      <% } %>
+      </div>
+    <% } %>
+  </div>
+</body>
+
+</html>

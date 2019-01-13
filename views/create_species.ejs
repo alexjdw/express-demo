@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <title>Jokes</title>
+  <style>
+    body {
+      background-color: lavender;
+    }
+    div {
+      background-color: ivory;
+      width: 60%;
+      margin: auto;
+      text-align: center;
+    }
+    input, textarea {
+      padding: .25em;
+      border-radius: 8px;
+      margin: .25em auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <form action="/create-species" method="POST">
+      Name:
+      <input name="name">
+      Min Height:
+      <input name="minheight">
+      Max Height:
+      <input name="maxheight">
+      Min Weight:
+      <input name="minweight">
+      Max Weight:
+      <input name="maxweight">
+      Fur Colors: (seperate with ,)
+      <input name="furcolors">
+      <input type="submit">
+    </form>
+</body>
+
+</html>

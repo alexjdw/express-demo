@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <title>Mongo Demo</title>
+  <style>
+    body {
+      background-color: lavender;
+    }
+    
+    div {
+      background-color: ivory;
+      width: 60%;
+      margin: auto;
+      text-align: center;
+      padding: 1em;
+    }
+    
+    input,
+    textarea,
+    select {
+      padding: .25em;
+      border-radius: 8px;
+      margin: .25em auto;
+      display: block;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#species').on("change", function(e) {
+        console.log("Selected")
+        $('#furcolor').html('');
+        var furcolors = $('#species option:selected').attr('furcolors').split(',');
+        for (var f = 0; f < furcolors.length; f++) {
+          if (furcolors[f]) {
+            $('#furcolor').append(
+              '<option value="' + furcolors[f] + '">' + furcolors[f] + '</option>');
+          }
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div>
+    <form action="/create-animal" enctype="multipart/form-data" method="POST">
+      <h3>Add your animal!</h3>
+      <label for="species">
+        Species
+      </label>
+      <select name="species" id="species">
+        <option></option>
+        <% for (var i=0; i<species.length; i++) { %>
+          <option value="<%= species[i].name %>" minheight="<%= species[i].minweight %>" minweight="<%= species[i].minheight %>"
+            maxheight="<%= species[i].maxheight %>" maxweight="<% species[i].maxweight %>"
+            furcolors="<% for (var c=0; c<species[i].fur_color_enum.length; c++) { %><%= species[i].fur_color_enum[c] %>,<% } %>">
+            <%= species[i].name %>
+          </option>
+        <% } %>
+      </select>
+      <label for="name">Name:</label>
+      <input type="text" name="name">
+      <label for="height">Height:</label>
+      <input type="text" name="height">
+      <label for="weight">Weight:</label>
+      <input type="text" name="weight">
+      <select name="furcolor" id="furcolor">
+        <option disabled aria-disabled="true">
+          Choose a Species...
+        </option>
+      </select>
+      <label for="image">Upload an image:
+      <input name="image" type="file">
+      <input type="submit">
+    </form>
+    <a href="/newspecies">Don't See Your Animal?</a>
+  </div>
+</body>
+
+</html>
