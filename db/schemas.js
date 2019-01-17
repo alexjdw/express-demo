@@ -1,5 +1,6 @@
-module.exports = {
-    species: {
+const mongoose = require('mongoose');
+
+const species = new mongoose.Schema({
         name: {
             type: String,
             required: true,
@@ -9,8 +10,9 @@ module.exports = {
         minweight: Number,
         maxweight: Number,
         fur_color_enum: [String],
-    },
-    animal: {
+    });
+
+const animal = new mongoose.Schema({
         species: {
             type: String,
             required: true,
@@ -33,5 +35,9 @@ module.exports = {
             required: true
         },
         image_url: String
-    }
+})
+
+module.exports = {
+    species: species,
+    animal: animal
 }
